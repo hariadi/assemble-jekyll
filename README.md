@@ -1,4 +1,4 @@
-# [assemble-examples-basic v0.1.1](http://github.com/assemble/assemble-examples-basic) [![Build Status](https://travis-ci.org/assemble/assemble-examples-basic.png)](https://travis-ci.org/assemble/assemble-examples-basic)
+# [assemble-jekyll v0.1.1](http://github.com/assemble/assemble-jekyll) [![Build Status](https://travis-ci.org/assemble/assemble-jekyll.png)](https://travis-ci.org/assemble/assemble-jekyll)
 
 > [Assemble][assemble] is a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
 
@@ -194,7 +194,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * 2013-04-15    v0.1.0    First commit. 
  
 
-[download]: https://github.com/assemble/assemble-examples-basic/archive/master.zip
+[download]: https://github.com/assemble/assemble-jekyll/archive/master.zip
 [assemble]: https://github.com/assemble/assemble/
 [assemble-examples]: https://github.com/assemble/assemble-examples
 

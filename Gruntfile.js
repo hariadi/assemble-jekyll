@@ -1,8 +1,8 @@
 /*
- * Assemble, plugin for Grunt.js
- * https://github.com/assemble/
+ * assemble-jekyll
+ * https://github.com/hariadi/
  *
- * Copyright (c) 2013 Upstage
+ * Copyright (c) 2013 Hariadi Hinta
  * Licensed under the MIT license.
  */
 
@@ -16,16 +16,20 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-        flatten: true,
         assets: 'dist/assets',
         layout: 'src/templates/layouts/default.hbs',
         partials: 'src/templates/partials/*.hbs',
+        flatten: true,
         data: 'src/data/*.{json,yml}'
       },
       pages: {
         files: {
-          'dist/': ['src/templates/pages/*.hbs', '!**/index.hbs'],
-          './': ['src/templates/pages/index.hbs']
+          // 'dist/': ['src/templates/pages/*.hbs', '!**/index.hbs'],
+          // './': ['src/templates/pages/index.hbs']
+          // 'dist': ['src/templates/pages/**/*.hbs'], // can't use this, assemble not creating directory
+          'dist/': ['src/templates/pages/*.hbs'],
+          'dist/_include/': ['src/templates/pages/_includes/*.hbs'],
+          'dist/_layouts/': ['src/templates/pages/_layouts/*.hbs']
         }        
       }
     },
@@ -34,7 +38,7 @@ module.exports = function(grunt) {
     // remove any previously-created files.
     clean: {
       dest: {
-        pages: ['dist/*.html', 'index.html']
+        src: [ 'dist/**/*.html' ]
       }
     }
   });

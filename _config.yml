@@ -1,0 +1,26 @@
+safe: true
+markdown: redcarpet
+
+# Permalinks
+permalink:    pretty
+
+# Server
+source:       ./dist
+
+# Site
+title: 
+  en: Site Title
+  ms: Tajuk Laman
+
+tagline:
+  en: Tagline
+  ms: Deskripsi untuk laman utama
+  
+
+author:
+  name: Your Name
+  email: your@email.com
+  github : yourgithub
+  twitter : yourtwitter
+
+subscribe_rss: /atom.xml
