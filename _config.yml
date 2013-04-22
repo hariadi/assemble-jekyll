@@ -8,15 +8,11 @@ permalink:    pretty
 source:       ./dist
 
 # Site
-title: 
-  en: Site Title
-  ms: Tajuk Laman
+title: Site Title
 
-tagline:
-  en: Tagline
-  ms: Deskripsi untuk laman utama
+tagline: Tagline
   
-
+# Author
 author:
   name: Your Name
   email: your@email.com
