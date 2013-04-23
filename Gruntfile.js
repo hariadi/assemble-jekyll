@@ -24,9 +24,6 @@ module.exports = function(grunt) {
       },
       pages: {
         files: {
-          // 'dist/': ['src/templates/pages/*.hbs', '!**/index.hbs'],
-          // './': ['src/templates/pages/index.hbs']
-          // 'dist': ['src/templates/pages/**/*.hbs'], // can't use this, assemble not creating directory
           'dist/': ['src/templates/pages/*.hbs'],
           'dist/_include/': ['src/templates/pages/_includes/*.hbs'],
           'dist/_layouts/': ['src/templates/pages/_layouts/*.hbs']
