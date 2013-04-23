@@ -1,8 +1,10 @@
 # Assemble Jekyll [v0.1.3](http://github.com/hariadi/assemble-jekyll)
 
+[![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png)](https://travis-ci.org/hariadi/assemble-jekyll)
+
 > [Assemble Jekyll][assemble-jekyll] is a [Yeoman][yeoman] generator template for Jekyll that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
 
-[![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png)](https://travis-ci.org/hariadi/assemble-jekyll) ***NOTE***: *This is my experimental project to learn Node.js*
+***NOTE***: *This is my experimental project to learn Node.js*
 
 ## Table of Contents
 
