@@ -1,25 +1,10 @@
 # [Assemble Jekyll v0.1.1](http://github.com/hariadi/assemble-jekyll) [![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png?branch=master)](https://travis-ci.org/hariadi/assemble-jekyll)
 
-**Table of Contents**
-
-- [Assemble Jekyll v0.1.1 ](#assemble-jekyll-v011-)
-	- [Getting started](#getting-started)
-	- [The "assemble" task](#the-assemble-task)
-		- [Overview](#overview)
-			- [YAML Front-Matter](#yaml-front-matter)
-		- [Options](#options)
-			- [flatten](#flatten)
-			- [layout](#layout)
-			- [partials](#partials)
-			- [assets](#assets)
-			- [data](#data)
-		- [Usage Examples](#usage-examples)
-	- [Contributing](#contributing)
-	- [Release History](#release-history)
+__TOC__
+==What is the Assemble Jekyll?==
+> [Assemble Jekyll][assemble-jekyll] is a [Yeoman][yeoman] generator template for Jekyll that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
 
 **NOTE**: This is my experimental project to learn Node.js
-
-> [Assemble Jekyll][assemble-jekyll] is a [Yeoman][yeoman] generator template for Jekyll that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
 
 The example shows how to construct a very basic site using:
 
@@ -29,8 +14,7 @@ The example shows how to construct a very basic site using:
 * YAML Front-matter
 * Markdown content
 
-
-## Getting started
+==Getting started==
 * Make sure you have [yo](https://github.com/yeoman/yo) installed:
     `npm install -g yo`
 * Install the generator: `npm install -g https://github.com/hariadi/generator-assemble.git`
@@ -43,9 +27,9 @@ The example shows how to construct a very basic site using:
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile][gruntfile], as well as install and use Grunt plugins. 
 
 
-## The "assemble" task
+==The "assemble" task==
 
-### Overview
+===Overview===
 In the project's Gruntfile, the example `assemble` task is pre-loaded with paths and options following standard Grunt.js conventions:
 
 ```js
