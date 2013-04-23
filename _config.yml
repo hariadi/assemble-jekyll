@@ -1,8 +1,8 @@
-safe: true
+#safe: true
 markdown: redcarpet
 
 # Permalinks
-permalink:    pretty
+#permalink:    pretty
 
 # Server
 source:       ./dist
@@ -11,12 +11,6 @@ source:       ./dist
 title: Site Title
 
 tagline: Tagline
-  
-# Author
-author:
-  name: Your Name
-  email: your@email.com
-  github : yourgithub
-  twitter : yourtwitter
 
-subscribe_rss: /atom.xml
+
+#subscribe_rss: /atom.xml
