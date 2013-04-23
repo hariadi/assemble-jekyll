@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         assets: 'dist/assets',
-        layout: 'src/templates/layouts/default.hbs',
+        //layout: 'src/templates/layouts/default.hbs',
         partials: 'src/templates/partials/*.hbs',
         flatten: true,
         data: 'src/data/*.{json,yml}'
