@@ -15,7 +15,7 @@
     "url": "https://github.com/hariadi/assemble-jekyll/issues"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.8.x"
   },
   "scripts": {
     "test": "grunt assemble"

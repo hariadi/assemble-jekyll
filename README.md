@@ -1,7 +1,8 @@
-# [assemble-jekyll v0.1.1](http://github.com/hariadi/assemble-jekyll) [![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png)](https://travis-ci.org/hariadi/assemble-jekyll)
+# [Assemble Jekyll v0.1.1](http://github.com/hariadi/assemble-jekyll) [![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png?branch=master)](https://travis-ci.org/hariadi/assemble-jekyll)
 
-> [Assemble][assemble] is a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
+**NOTE**: This is my experimental project to learn Node.js
 
+> [Assemble Jekyll][assemble-jekyll] is a [Yeoman][yeoman] generator template for Jekyll that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
 
 The example shows how to construct a very basic site using:
 
@@ -12,14 +13,17 @@ The example shows how to construct a very basic site using:
 * Markdown content
 
 
-## Getting Started
-
-* **[Download this project][download]** and unzip it into a new folder.  
-* In the project folder, run `npm install` to install [Assemble][assemble], [Grunt](http://gruntjs.com/) and any other dependencies.
+## Getting started
+* Make sure you have [yo](https://github.com/yeoman/yo) installed:
+    `npm install -g yo`
+* Install the generator: `npm install -g https://github.com/hariadi/generator-assemble.git`
+* `git submodule add https://github.com/hariadi/assemble-jekyll.git app/templates` OR **[Download this project][download]** and unzip it into a `app/templates`. 
+* Create new project: `mkdir your.github.com && cd your.github.com`
+* In the `your.github.com` folder, Run: `yo assemble:app`
+* Run `npm install` to install [Assemble][assemble], [Grunt](http://gruntjs.com/) and any other dependencies.
 * Once the dependencies are installed you may run `grunt assemble` to build the example project.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile][gruntfile], as well as install and use Grunt plugins. 
-
 
 
 ## The "assemble" task
@@ -191,12 +195,15 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 
 ## Release History
-* 2013-04-15    v0.1.0    First commit. 
- 
+* 2013-04-23    v0.1.1    Travis, Jekyll skeleton. 
+* 2013-04-23    v0.1.0    First commit. 
 
-[download]: https://github.com/assemble/assemble-jekyll/archive/master.zip
+[yeoman]: http://yeoman.io/
+
+[download]: https://github.com/hariadi/assemble-jekyll/archive/master.zip
 [assemble]: https://github.com/assemble/assemble/
 [assemble-examples]: https://github.com/assemble/assemble-examples
+[assemble-jekyll]: https://github.com/hariadi/assemble-jekyll
 
 [wiki]: https://github.com/assemble/assemble/wiki
 [layouts]: https://github.com/assemble/assemble/wiki/layouts
