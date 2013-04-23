@@ -1,7 +1,7 @@
 {
   "name": "assemble-jekyll",
   "description": "Demonstrates Yeoman generator with Assemble for Jekyll static site. Example includes layouts, pages, partials, and markdown content.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/hariadi/assemble-jekyll",
   "author": {
     "name": "Hariadi Hinta",
