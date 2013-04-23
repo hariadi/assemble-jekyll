@@ -13,6 +13,19 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    
+    // Release management
+    release: {
+      options: {
+        bump: true,
+        add: true,
+        commit: true,
+        tag: false,
+        push: false,
+        pushTags: false,
+        npm: false
+      }
+    },
 
     assemble: {
       options: {
@@ -42,6 +55,7 @@ module.exports = function(grunt) {
   // Load npm plugins to provide necessary tasks.
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-release');
 
   // Default task to be run.
   grunt.registerTask('default', ['clean', 'assemble']);
