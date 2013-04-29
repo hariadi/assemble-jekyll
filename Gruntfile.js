@@ -26,14 +26,10 @@ module.exports = function(grunt) {
         npm: false
       }
     },
-
+    
+    // Site generator
     assemble: {
-      options: {
-        assets: 'dist/assets',
-        partials: 'src/templates/partials/*.hbs',
-        flatten: true,
-        data: 'src/data/*.{json,yml}'
-      },
+      options: grunt.file.readYAML('config/site.yml'),
       pages: {
         files: {
           'dist/': ['src/templates/pages/*.hbs'],
