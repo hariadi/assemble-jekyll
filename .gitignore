@@ -1,4 +1,7 @@
 node_modules
+components
+src/assets
+dist
 npm-debug.log
 _site
 
