@@ -1,4 +1,4 @@
-/* Build: assemble-jekyll - v0.3.0 - 2013-05-13 */
+/* Build: assemble-jekyll - v0.3.1 - 2013-05-13 */
 /* ===================================================
  * bootstrap-transition.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#transitions
