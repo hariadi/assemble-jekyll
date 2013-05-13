@@ -1,9 +1,14 @@
 <div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="navbar-brand" href="{{#isnt title "Home"}}../{{/isnt}}index.html">ASSEMBLE</a>
-      <ul class="nav">
-        <li{{#is title "Home"}} class="active"{{/is}}{% if page.title == "Home" %} class="active"{% endif %}>
+  <div class="container">
+    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <a class="navbar-brand" href="{{#isnt title "Home"}}../{{/isnt}}index.html">ASSEMBLE</a>
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+         <li{{#is title "Home"}} class="active"{{/is}}{% if page.title == "Home" %} class="active"{% endif %}>
           <a href="{{#isnt title "Home"}}../{{/isnt}}index.html">Home</a>
         </li>
         <li{{#is title "Partials"}} class="active"{{/is}}{% if page.title == "Partials" %} class="active"{% endif %}>
@@ -16,10 +21,10 @@
           <a href="{{#is title "Home"}}dist/{{/is}}basic.html">Basic</a>
         </li>
       </ul>
-      <ul class="nav pull-right">
+      <ul class="nav navbar-nav pull-right">
         <li>
           <a href="https://github.com/assemble/assemble-examples">More Examples</a>
-        </li>        
+        </li>
         <li>
           <a href="https://github.com/assemble/assemble/">Visit Assemble</a>
         </li>
