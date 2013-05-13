@@ -32,7 +32,7 @@ module.exports = (grunt) ->
     less:
       development:
         files:
-          "src/assets/css/bootstrap.css": "component/less/bootstrap.less"
+          "src/assets/css/bootstrap.css": "component/assemble/theme.less"
 
       production:
         options:
@@ -87,16 +87,13 @@ module.exports = (grunt) ->
           cwd: "component/"
           src: ["fonts/**"]
           dest: "src/assets/"
-        ]
-
-      main:
-        files: [
+        ,
           expand: true
           cwd: "src/"
           src: ["assets/**"]
           dest: "dist/"
         ]
-    
+        
     # Release management
     release:
       options:
