@@ -10,7 +10,7 @@ module.exports = (grunt) ->
   # Project configuration.
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json")
-    
+
     # conf: grunt.file.readYAML('config/config.yml'), // uncomment if you want use YAML as config file
     jshint:
       options:
@@ -27,21 +27,24 @@ module.exports = (grunt) ->
         files:
           src: ["component/js/*.js"]
 
-    
+
     # Compile LESS with grunt-contrib-less
     less:
       development:
-        files:
-          "src/assets/css/bootstrap.css": "component/assemble/theme.less"
+        files: [
+          "src/assets/css/assemble.css": "component/assemble/theme.less"
+        ,
+          "src/assets/css/bootstrap.css": "component/less/bootstrap.less"
+        ]
 
       production:
         options:
           yuicompress: true
 
         files:
-          "src/assets/css/bootstrap.min.css": "component/less/bootstrap.less"
+          "src/assets/css/assemble.min.css": "component/assemble/theme.less"
 
-    
+
     # grunt-uglify don't have multi target per source
     uglify:
       development:
@@ -93,7 +96,12 @@ module.exports = (grunt) ->
           src: ["assets/**"]
           dest: "dist/"
         ]
-        
+
+    coffee:
+      compile:
+        files:
+          "Gruntfile.js": "src/coffee/Gruntfile.coffee"
+
     # Release management
     release:
       options:
@@ -105,7 +113,7 @@ module.exports = (grunt) ->
         pushTags: false
         npm: false
 
-  
+
   # Load npm plugins to provide necessary tasks.
   grunt.loadNpmTasks "assemble"
   grunt.loadNpmTasks "grunt-contrib-clean"
@@ -113,8 +121,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-jshint"
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-release"
-  
+
   ###
   * assemble-jekyll task
   * 1. jshint
@@ -123,8 +132,5 @@ module.exports = (grunt) ->
   * 4. Assemble [clean,assemble]
   * 5. Release {major|minor|patch}
   * 6. Copy bootstrap component -> src/assets
-  
-  this not work (assets folder cot copy) and need to move copy to last task. dunno why
-  grunt.registerTask "default", ["jshint", "less", "uglify", "copy", "clean", "assemble"]
   ###
   grunt.registerTask "default", ["jshint", "less", "uglify", "clean", "assemble", "copy"]
