@@ -1,6 +1,6 @@
 #safe: true
 markdown: redcarpet
-
+pygments:     true
 # Permalinks
 #permalink:    pretty
 
@@ -11,6 +11,5 @@ source:       ./dist
 title: Site Title
 
 tagline: Tagline
-
 
 #subscribe_rss: /atom.xml
