@@ -6,8 +6,8 @@
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: @navbar-padding;
+  padding-right: @navbar-padding;
   background-color: @navbar-bg;
   border-radius: @border-radius-base;
 
@@ -22,12 +22,14 @@
   // Space out from .navbar .brand and .btn-navbar when stacked in mobile views
   // and outdent nav links so text lines up with logo.
   margin-top: 10px;
+  margin-bottom: 15px;
 
   > li > a {
     padding-top: ((@navbar-height - @line-height-computed) / 2);
     padding-bottom: ((@navbar-height - @line-height-computed) / 2);
     color: @navbar-link-color;
     line-height: 20px;
+    border-radius: @border-radius-base;
   }
   > li > a:hover,
   > li > a:focus {
@@ -45,6 +47,12 @@
   > .disabled > a:focus {
     color: @navbar-link-disabled-color;
     background-color: @navbar-link-disabled-bg;
+  }
+
+  // Right aligned contents
+  // Make them full width first so that they align properly on mobile
+  &.pull-right {
+    width: 100%;
   }
 }
 
@@ -88,7 +96,7 @@
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px;
+  padding: @navbar-padding;
   font-size: @font-size-large;
   font-weight: 500;
   line-height: @line-height-computed;
@@ -133,7 +141,7 @@
 // Navbar form
 .navbar-form {
   .form-inline();
-  .navbar-vertical-align(34px); // Vertically center in navbar
+  .navbar-vertical-align(@input-height-base); // Vertically center in navbar
 }
 
 // Dropdown menus
@@ -272,23 +280,29 @@
 // Responsive navbar
 // --------------------------------------------------
 
-@media screen and (min-width: @screen-tablet) {
+@media screen and (min-width: @grid-float-breakpoint) {
 
   .navbar-brand {
     float: left;
-    margin-left: -5px;
+    margin-left: -(@navbar-padding);
     margin-right: 5px;
   }
-  .navbar .nav {
+  .navbar-nav {
     float: left;
-    margin-top: 0; // undo top margin to make nav extend full height of navbar
+    // undo margin to make nav extend full height of navbar
+    margin-top: 0;
+    margin-bottom: 0;
 
     > li {
       float: left;
+      > a {
+        border-radius: 0;
+      }
     }
 
     &.pull-right {
       float: right;
+      width: auto;
     }
   }
 

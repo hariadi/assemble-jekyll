@@ -26,7 +26,7 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      display: block;
+      .img-responsive();
       line-height: 1;
     }
   }
@@ -90,13 +90,13 @@
 
   // Set gradients for backgrounds
   &.left {
-    #gradient > .horizontal(rgba(0,0,0,.5), rgba(0,0,0,.0001));
+    #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
     background-color: transparent;
   }
   &.right {
     left: auto;
     right: 0;
-    #gradient > .horizontal(rgba(0,0,0,.0001), rgba(0,0,0,.5));
+    #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
     background-color: transparent;
   }
 
@@ -128,9 +128,10 @@
   position: absolute;
   bottom: 20px;
   left: 50%;
-  z-index: 5;
+  z-index: 15;
   width: 100px;
   margin: 0 0 0 -50px;
+  padding-left: 0;
   list-style: none;
   text-align: center;
 
