@@ -59,19 +59,17 @@
       },
 
       uglify: {
-        production: {
-          options: {
-            banner: "/**\n" + " * Bootstrap.js v3.0.0 by @fat & @mdo\n" + " * Copyright <%= grunt.template.today(\"yyyy\") %> Twitter, Inc.\n" + " * http://www.apache.org/licenses/LICENSE-2.0.txt\n" + " * \n" + " * Build: <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today(\"yyyy-mm-dd\") %>\n" + " */\n",
-            compress: {
-              global_defs: {
-                DEBUG: false
-              },
-              dead_code: true
-            }
-          },
-          files: {
-            "src/assets/js/bootstrap.min.js": ["<%= concat.bootstrap.dest %>"]
+        options: {
+          banner: "/**\n" + " * Bootstrap.js v3.0.0 by @fat & @mdo\n" + " * Copyright <%= grunt.template.today(\"yyyy\") %> Twitter, Inc.\n" + " * http://www.apache.org/licenses/LICENSE-2.0.txt\n" + " * \n" + " * Build: <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today(\"yyyy-mm-dd\") %>\n" + " */\n",
+          compress: {
+            global_defs: {
+              DEBUG: false
+            },
+            dead_code: true
           }
+        },
+        files: {
+          "src/assets/js/bootstrap.min.js": ["<%= concat.bootstrap.dest %>"]
         }
       },
       assemble: {
@@ -129,8 +127,8 @@
     /*
     * assemble-jekyll task
     * 1. jshint
-    * 2. Compile LESS to CSS {developmen|production}
-    * 3. uglifyjs {developmen|production}
+    * 2. Compile LESS to CSS
+    * 3. uglifyjs
     * 4. Assemble [clean,assemble]
     * 5. Release {major|minor|patch}
     * 6. Copy bootstrap component -> src/assets
