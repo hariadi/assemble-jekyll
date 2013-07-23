@@ -47,17 +47,18 @@
           }
         }
       },
-      uglify: {
-        development: {
-          options: {
-            banner: "/* Build: <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today(\"yyyy-mm-dd\") %> */\n",
-            beautify: true,
-            preserveComments: "all"
-          },
-          files: {
-            "src/assets/js/bootstrap.js": ["component/js/bootstrap-transition.js", "component/js/bootstrap-alert.js", "component/js/bootstrap-button.js", "component/js/bootstrap-carousel.js", "component/js/bootstrap-collapse.js", "component/js/bootstrap-dropdown.js", "component/js/bootstrap-modal.js", "component/js/bootstrap-tooltip.js", "component/js/bootstrap-popover.js", "component/js/bootstrap-scrollspy.js", "component/js/bootstrap-tab.js", "component/js/bootstrap-typeahead.js", "component/js/bootstrap-affix.js"]
-          }
+
+      concat: {
+        options: {
+          stripBanners: false
         },
+        bootstrap: {
+          src: ['component/js/*.js'],
+          dest: 'src/assets/js/bootstrap.js'
+        }
+      },
+
+      uglify: {
         production: {
           options: {
             banner: "/**\n" + " * Bootstrap.js v3.0.0 by @fat & @mdo\n" + " * Copyright <%= grunt.template.today(\"yyyy\") %> Twitter, Inc.\n" + " * http://www.apache.org/licenses/LICENSE-2.0.txt\n" + " * \n" + " * Build: <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today(\"yyyy-mm-dd\") %>\n" + " */\n",
@@ -69,7 +70,7 @@
             }
           },
           files: {
-            "src/assets/js/bootstrap.min.js": ["component/js/bootstrap-transition.js", "component/js/bootstrap-alert.js", "component/js/bootstrap-button.js", "component/js/bootstrap-carousel.js", "component/js/bootstrap-collapse.js", "component/js/bootstrap-dropdown.js", "component/js/bootstrap-modal.js", "component/js/bootstrap-tooltip.js", "component/js/bootstrap-popover.js", "component/js/bootstrap-scrollspy.js", "component/js/bootstrap-tab.js", "component/js/bootstrap-typeahead.js", "component/js/bootstrap-affix.js"]
+            "src/assets/js/bootstrap.min.js": ["<%= concat.bootstrap.dest %>"]
           }
         }
       },
@@ -118,6 +119,7 @@
       }
     });
     grunt.loadNpmTasks("assemble");
+    grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-jshint");
