@@ -15,9 +15,6 @@
         options: {
           jshintrc: ".jshintrc"
         },
-        globals: {
-          jQuery: true
-        },
         gruntfile: ["Gruntfile.js"],
         bootstrap: {
           options: {
@@ -103,17 +100,6 @@
             }
           ]
         }
-      },
-      release: {
-        options: {
-          bump: true,
-          add: false,
-          commit: false,
-          tag: false,
-          push: false,
-          pushTags: false,
-          npm: false
-        }
       }
     });
     grunt.loadNpmTasks("assemble");
@@ -123,14 +109,12 @@
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-less");
     grunt.loadNpmTasks("grunt-contrib-uglify");
-    grunt.loadNpmTasks("grunt-release");
     /*
     * assemble-jekyll task
     * 1. jshint
     * 2. Compile LESS to CSS
     * 3. uglifyjs
     * 4. Assemble [clean,assemble]
-    * 5. Release {major|minor|patch}
     * 6. Copy bootstrap component -> src/assets
     */
 
