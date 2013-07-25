@@ -41,7 +41,7 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 
 
 ## Assemble
-Visit [Assemble][assemble] documentation
+Visit [Assemble][assemble-docs] documentation
 
 
 
@@ -58,7 +58,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * 2013-04-23    v0.1.0    First commit.
 
 [download]: https://github.com/hariadi/assemble-jekyll/archive/master.zip
-[assemble]: https://github.com/assemble/assemble/
+[assemble]: https://assemble.io
+[assemble-docs]: https://assemble.io/docs
 [assemble-examples]: https://github.com/assemble/assemble-examples
 [assemble-jekyll]: https://github.com/hariadi/assemble-jekyll
 [gruntfile]: http://gruntjs.com/sample-gruntfile
