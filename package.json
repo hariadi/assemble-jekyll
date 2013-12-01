@@ -1,7 +1,7 @@
 {
   "name": "assemble-jekyll",
   "description": "Yeoman generator for Assemble that generate layouts, pages, partials, and markdown content for Jekyll static site.",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "homepage": "https://github.com/hariadi/assemble-jekyll",
   "author": {
     "name": "Hariadi Hinta",
@@ -21,14 +21,18 @@
     "test": "grunt assemble"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "assemble": "~0.3.73",
+    "assemble": "~0.4.30",
+    "assemble-less": "~0.5.3",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-less": "~0.6.4",
-    "grunt-contrib-concat": "~0.3.0"
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "helper-compose": "~0.1.1",
+    "helper-prettify": "~0.1.7",
+    "lorem-ipsum": "~0.1.1",
+    "permalinks": "~0.1.9",
+    "lodash": "~2.2.1",
+    "grunt-contrib-copy": "~0.4.1"
   },
   "licenses": [
     {

@@ -1,15 +1,54 @@
-#safe: true
-markdown: redcarpet
-pygments:     true
-# Permalinks
-#permalink:    pretty
+# Build
+dest: _site
 
-# Server
-source:       ./dist
 
-# Site
-title: Site Title
+# Site metadata
+title: Blog
+lead: false
+description: >
+  "Blog for Assemble."
 
-tagline: Tagline
+# License info
+license:
+  type: MIT License
+  url: ./license/index.html
 
-#subscribe_rss: /atom.xml
+
+# URLs
+blog: http://hariadi.github.io/assemble-jekyll
+repo: https://github.com/hariadi/assemble-jekyll
+download:
+  source: <%= site.repo %>/archive/master.zip
+  source: <%= site.repo %>/archive/master.zip
+
+
+# SEO/SEM
+google_analytics: false
+google_site_id: false
+
+
+# Comments
+disqus:
+  shortname: assemble-jekyll
+
+
+# Social
+social:
+  twitter:
+    via: hariadi
+    username: hariadi
+  facebook: false
+  gplus: false
+  hn: false
+  google: false
+
+
+# Sharing
+social:
+  twitter: false
+  facebook: false
+  gplus: false
+  hn: false
+  google: false
+
+

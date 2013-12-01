@@ -1,9 +1,0 @@
-src:
-  js: src/assets/js
-  css: src/assets/css
-  templates: src/templates
-comp:
-  js: component/js
-  css: component/css
-  less: component/less
-  font: component/fonts
