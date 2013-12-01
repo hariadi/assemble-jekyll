@@ -1,4 +1,4 @@
-# Assemble Jekyll [v0.3.1]
+# Assemble Jekyll [v0.4.0]
 [![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png)](https://travis-ci.org/hariadi/assemble-jekyll)
 
 > Jekyll scaffold that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
@@ -14,14 +14,14 @@
 * Run:
 
   ```
-  npm install
+  npm install && bower install
   ```
 
   to install [Assemble][assemble], [Grunt](http://gruntjs.com/) and any other dependencies.
 * Once the dependencies are installed you may run
 
   ```
-  grunt assemble
+  grunt
   ```
 
   to build the example project.
