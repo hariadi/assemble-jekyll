@@ -1,19 +1,23 @@
+---
+layout: pretty.hbs
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{assets}}/bootstrap.css">
+    {{> head }}
   </head>
   <body>
-    <!-- nav partial -->
-    {{> nav }}
+    <a class="sr-only" href="#content">Skip navigation</a>
+    <!-- Navbar -->
+    {{> nav-main }}
 
+    <!-- Content -->
     <div class="container">
-      <!-- pages -->
       {{> body }}
-
-      <script src="{{assets}}/highlight.js"></script>
     </div>
+
+    <!-- JS and analytics only. -->
+    {{> footer }}
+
   </body>
 </html>

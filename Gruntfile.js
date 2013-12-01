@@ -6,119 +6,166 @@
 * Licensed under the MIT license.
 */
 
+'use strict';
 
-(function() {
-  module.exports = function(grunt) {
-    grunt.initConfig({
-      pkg: grunt.file.readJSON("package.json"),
-      jshint: {
-        options: {
-          jshintrc: ".jshintrc"
+module.exports = function(grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+
+    // Project metadata
+    pkg   : grunt.file.readJSON('package.json'),
+    vendor: grunt.file.readJSON('.bowerrc').directory,
+    site  : grunt.file.readYAML('_config.yml'),
+    pages : grunt.file.readJSON('src/data/pages.json'),
+
+    config: {
+      src: 'src',
+      dist: '<%= site.dest %>',
+      bootstrap: '<%= vendor %>/bootstrap/less',
+      jquery: '<%= vendor %>/jquery',
+      holder: '<%= vendor %>/holderjs',
+      highlight: '<%= vendor %>/highlightjs'
+    },
+
+    /**
+     * Lint JavaScript
+     */
+    jshint: {
+      all: ['Gruntfile.js', 'helpers/*.js'],
+      options: {
+        jshintrc: '.jshintrc'
+      }
+    },
+
+    /**
+     * Compile LESS to CSS
+     */
+    less: {
+      options: {
+        paths: ['<%= config.bootstrap %>', '<%= config.src %>/theme/components'],
+      },
+      bootstrap: {
+        src: ['<%= config.src %>/theme/theme.less'],
+        dest: '<%= assemble.options.assets %>/css/blog.css'
+      }
+    },
+
+    /**
+     * Build HTML from templates and data
+     */
+    assemble: {
+      options: {
+        flatten: true,
+
+        // Custom property for _config.yml
+        site: '<%= site %>',
+
+        // Extensions
+        helpers: ['helper-prettify', 'helper-compose', '<%= config.src %>/templates/helpers/*.js'],
+        permalinks: {
+          preset: 'pretty'
         },
-        gruntfile: ["Gruntfile.js"],
-        bootstrap: {
-          options: {
-            jshintrc: "component/js/.jshintrc"
-          },
-          files: {
-            src: ["component/js/*.js"]
-          }
+        // Templates and data
+        data: ['data/**/*.{json,yml}'],
+        partials: ['<%= config.src %>/templates/includes/*.hbs'],
+        layoutdir: '<%= config.src %>/templates/layouts',
+        layout: 'default.hbs',
+
+        // Site variables
+        assets: '<%= site.dest %>/assets',
+        root: '<%= site.dest %>',
+      },
+      // Generate the main pages of the site.
+      site: {
+        files: {
+          '<%= site.dest %>/': ['<%= config.src %>/templates/*.hbs']
         }
       },
-      less: {
-        development: {
-          files: [
-            {
-              "src/assets/css/assemble.css": "component/assemble/theme.less"
-            }, {
-              "src/assets/css/bootstrap.css": "component/less/bootstrap.less"
-            }
-          ]
-        },
-        production: {
-          options: {
-            yuicompress: true
-          },
-          files: {
-            "src/assets/css/assemble.min.css": "component/assemble/theme.less"
-          }
-        }
-      },
-
-      concat: {
+      // Generate posts from "./data/pages.json"
+      blog: {
         options: {
-          stripBanners: false
-        },
-        bootstrap: {
-          src: ['component/js/*.js'],
-          dest: 'src/assets/js/bootstrap.js'
-        }
-      },
-
-      uglify: {
-        options: {
-          banner: "/**\n" + " * Bootstrap.js v3.0.0 by @fat & @mdo\n" + " * Copyright <%= grunt.template.today(\"yyyy\") %> Twitter, Inc.\n" + " * http://www.apache.org/licenses/LICENSE-2.0.txt\n" + " * \n" + " * Build: <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today(\"yyyy-mm-dd\") %>\n" + " */\n",
-          compress: {
-            global_defs: {
-              DEBUG: false
-            },
-            dead_code: true
-          }
+          layout: 'blog.hbs',
+          engine: 'handlebars'
         },
         files: {
-          "src/assets/js/bootstrap.min.js": ["<%= concat.bootstrap.dest %>"]
-        }
-      },
-      assemble: {
-        options: grunt.file.readYAML("config/site.yml"),
-        pages: {
-          files: {
-            "dist/": ["src/templates/pages/*.hbs"],
-            "dist/_includes/": ["src/templates/pages/_includes/*.hbs"],
-            "dist/_layouts/": ["src/templates/pages/_layouts/*.hbs"]
-          }
-        }
-      },
-      clean: {
-        assemble: {
-          src: ["dist/**/*.html", "dist/assets"]
-        }
-      },
-      copy: {
-        font: {
-          files: [
-            {
-              expand: true,
-              cwd: "component/",
-              src: ["fonts/**"],
-              dest: "src/assets/"
-            }, {
-              expand: true,
-              cwd: "src/",
-              src: ["assets/**"],
-              dest: "dist/"
-            }
-          ]
+          '<%= site.dest %>/blog/': ['templates/list.hbs', '<%= config.src %>/posts/*.md']
         }
       }
-    });
-    grunt.loadNpmTasks("assemble");
-    grunt.loadNpmTasks("grunt-contrib-concat");
-    grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-less");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
-    /*
-    * assemble-jekyll task
-    * 1. jshint
-    * 2. Compile LESS to CSS
-    * 3. uglifyjs
-    * 4. Assemble [clean,assemble]
-    * 6. Copy bootstrap component -> src/assets
-    */
+    },
 
-    return grunt.registerTask("default", ["jshint", "less", "uglify", "clean", "assemble", "copy"]);
-  };
+    /**
+     * Copy vendor dist to assets
+     */
+    copy: {
+      bootstrap: {
+        expand: true,
+        cwd: 'vendor/bootstrap/dist/',
+        src: [
+          'js/*',
+          'fonts/*'],
+        dest: '<%= assemble.options.assets %>/'
+      },
+      bootstrapcss: {
+        expand: true,
+        cwd: 'vendor/bootstrap/assets/',
+        src: [
+          'js/*',
+          'fonts/*'],
+        dest: '<%= assemble.options.assets %>/'
+      },
+      jquery: {
+        src: '<%= config.jquery %>/jquery.min.js',
+        dest: '<%= assemble.options.assets %>/js/jquery.js'
+      },
+      holder: {
+        src: '<%= config.holder %>/holder.js',
+        dest: '<%= assemble.options.assets %>/js/holder.js'
+      },
+      highlight: {
+        src: '<%= config.highlight %>/highlight.pack.js',
+        dest: '<%= assemble.options.assets %>/js/highlight.js'
+      },
+    },
 
-}).call(this);
+    /**
+     * Before generating any new files,
+     * clean out files from previous build.
+     */
+    clean: {
+      example: ['<%= site.dest %>/**/*.html']
+    },
+
+    /**
+     * Run predefined tasks whenever watched file
+     * patterns are added, changed or deleted.
+     */
+    watch: {
+      all: {
+        files: ['<%= jshint.all %>'],
+        tasks: ['jshint', 'nodeunit']
+      },
+      design: {
+        files: ['Gruntfile.js', '<%= less.options.paths %>/*.less', '<%= config.src %>/templates/**/*.hbs'],
+        tasks: ['design']
+      }
+    }
+
+  });
+
+  // Load npm plugins to provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('assemble-less');
+  grunt.loadNpmTasks('assemble');
+
+
+  // Build HTML, compile LESS and watch for changes.
+  grunt.registerTask('design', ['clean', 'assemble', 'less:bootstrap', 'watch:design', 'connect']);
+
+  // Default tasks to be run.
+  grunt.registerTask('default', ['clean', 'jshint', 'less', 'copy', 'assemble']);
+};
