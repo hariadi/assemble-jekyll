@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Post 1 | Blog</title>
+    <link rel="stylesheet" href="../assets/css/blog.css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip navigation</a> 
+
+    <!-- Navbar -->
+    <header class="navbar navbar-fixed-top navbar-default" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+          </button>
+          <a href="./index.html" class="navbar-brand">Blog</a> 
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav pull-right">
+            <li>
+              <a href="./about.html">About</a> 
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="container">
+
+      <!-- Pagination -->
+      <ul class="pager pager-justified">
+        <li class="previous">
+          <a href="baz.html">&larr; Previous</a> 
+        </li>
+        <li class="next disabled">
+          <a href="foo.html">Next &rarr;</a> 
+        </li>
+      </ul>
+
+      <!-- Blog Posts -->
+      > This is my first blog post. Incididunt enim deserunt aute reprehenderit ex do. > Cras sit amet nibh libero, in gravida nulla. Est aliqua et deserunt non sint laborum.
+
+      <!-- Comments -->
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+        var disqus_shortname = 'assemble-jekyll'; // Required - Replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+         (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the
+        <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a> 
+      </noscript>
+    </div>
+
+    <!-- JS and analytics only. -->
+    <footer class="bs-footer" role="contentinfo">
+      <div class="container">
+        <p>&quot;Blog for Assemble.&quot;
+        </p>
+        <p>Code licensed under the
+          <a href="./license/" target="_blank">MIT License</a>, documentation under
+          <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li>
+            <a href="https://github.com/hariadi/assemble-jekyll">Repo</a> 
+          </li>
+          <li class="muted">&middot;</li>
+          <li>
+            <a href="https://github.com/hariadi/assemble-jekyll/issues?state=open">Issues</a> 
+          </li>
+          <li class="muted">&middot;</li>
+          <li>
+            <a href="http://assemble.io">Assemble</a> 
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <script src="../assets/js/holder.js"></script>
+    <script src="../assets/js/highlight.js"></script>
+  </body>
+</html>
