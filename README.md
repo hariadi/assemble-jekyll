@@ -23,22 +23,28 @@
   ```
   grunt
   ```
-
   to build the example project.
 
+## `gh-pages` Deployment
 
+After `grunt` command, Assemble task will generates `_site` directory that can be deployed.
 
-## Grunt Tasks
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile][gruntfile], as well as install and use Grunt plugins.
+1. Initialize your repo/project
+  ```shell
+  cd _site && git init && git add -A && git commit -m "Initial _site commit"
+  ```
 
-  - Twitter Bootstrap v3.0.2
-  - jshint
-  - uglifyjs
-  - less
-  - concat
-  - copy
+2. Add repo/project remote & checkout `gh-pages` branch (change `hariadi/assemble-jekyll` with your own repo/project)
+  ```shell
+  git remote add origin https://github.com/hariadi/assemble-jekyll.git && git checkout -b gh-pages
+  ```
 
+3. Push to `gh-pages` branch
+  ```shell
+  git push origin gh-pages
+  ```
 
+If you not comfortable with this way, you can follow using `[git subtree](http://yeoman.io/deployment.html)`. - git subtree is not available for msysgit
 
 ## Assemble
 Visit [Assemble][assemble-docs] documentation
