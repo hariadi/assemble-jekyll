@@ -133,7 +133,7 @@ module.exports = function(grunt) {
      * clean out files from previous build.
      */
     clean: {
-      example: ['<%= site.dest %>/**/*.html']
+      site: ['<%= site.dest %>']
     },
 
     /**
