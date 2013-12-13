@@ -46,7 +46,9 @@ After `grunt` command, Assemble task will generates `_site` directory that can b
 
 If you not comfortable with this way, you can follow using [git subtree](http://yeoman.io/deployment.html).
 
-NOTE for `msysgit` user: You need to install `git subtree` manually:
+NOTE for `msysgit` user: `git subtree` is still part of the 'contrib' folder and isn't installed by default on `msysgit` (`git subtree` installed by default on Git for Windows).
+
+You need to install `git subtree` manually:
 
 ```shell
 cd /path/to/msysgit/contrib/subtree && make install INSTALL=/bin/install prefix=
