@@ -44,11 +44,16 @@ After `grunt` command, Assemble task will generates `_site` directory that can b
   git push origin gh-pages
   ```
 
-If you not comfortable with this way, you can follow using [git subtree](http://yeoman.io/deployment.html). - NOTE: Currently `git subtree` is not available for msysgit (git 1.8.4)
+If you not comfortable with this way, you can follow using [git subtree](http://yeoman.io/deployment.html).
+
+NOTE for `msysgit` user: You need to install `git subtree` manually:
+
+```shell
+cd /path/to/msysgit/contrib/subtree && make install INSTALL=/bin/install prefix=
+```
 
 ## Assemble
 Visit [Assemble][assemble-docs] documentation
-
 
 
 ## Contributing
