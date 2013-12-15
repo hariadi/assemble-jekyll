@@ -1,4 +1,4 @@
-# Assemble Jekyll [v0.4.0]
+# Assemble Jekyll [v0.4.2]
 [![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png)](https://travis-ci.org/hariadi/assemble-jekyll)
 
 > Jekyll scaffold that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
