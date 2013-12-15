@@ -1,4 +1,4 @@
-# Assemble Jekyll [v0.4.0]
+# Assemble Jekyll [v0.4.2]
 [![Build Status](https://travis-ci.org/hariadi/assemble-jekyll.png)](https://travis-ci.org/hariadi/assemble-jekyll)
 
 > Jekyll scaffold that use [Assemble][assemble] as a Grunt plugin that makes it dead simple to build modular sites and components from reusable **templates** and **data**.
@@ -44,11 +44,18 @@ After `grunt` command, Assemble task will generates `_site` directory that can b
   git push origin gh-pages
   ```
 
-If you not comfortable with this way, you can follow using [git subtree](http://yeoman.io/deployment.html). - NOTE: Currently `git subtree` is not available for msysgit (git 1.8.4)
+If you not comfortable with this way, you can follow using [git subtree](http://yeoman.io/deployment.html).
+
+NOTE for `msysgit` user: `git subtree` is still part of the 'contrib' folder and isn't installed by default on `msysgit` (`git subtree` installed by default on Git for Windows).
+
+You need to install `git subtree` manually:
+
+```shell
+cd /path/to/msysgit/contrib/subtree && make install INSTALL=/bin/install prefix=
+```
 
 ## Assemble
 Visit [Assemble][assemble-docs] documentation
-
 
 
 ## Contributing
