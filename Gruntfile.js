@@ -83,16 +83,9 @@ module.exports = function(grunt) {
         options: {
           engine: 'handlebars',
           permalinks: {
-            //filename: true
-            // _stie/blog/category/filename/index
-            patterns: [
-              {
-                pattern: /^(\d+)-(\d+)-(\d+)-?/,
-                replacement: function (a, y, m, d) {
-                  return [].join('/');
-                }
-              }
-            ]
+            //structure: ':category',
+            preset: 'pretty',
+            filename: true
           }
         },
         files: {
