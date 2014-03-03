@@ -1,0 +1,17 @@
+{
+  "generator-assemble": {
+    "projectName": "assemble jekyll",
+    "projectDesc": "The best project ever.",
+    "githubUser": "hariadi",
+    "installPlugin": true,
+    "author": {
+      "name": "Hariadi Hinta",
+      "login": "assemble",
+      "email": "diperakui@yahoo.com"
+    },
+    "plugins": [
+      "assemble-contrib-permalinks",
+      "assemble-contrib-sitemap"
+    ]
+  }
+}
