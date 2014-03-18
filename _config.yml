@@ -1,12 +1,19 @@
 # Build
 dest: _site
 
+exclude: ["README.md", "Rakefile", "CHANGELOG.md"]
 
 # Site metadata
 title: Blog
-lead: false
 description: >
   "Blog for Assemble."
+tagline: Site Tagline
+author :
+  name : Name Lastname
+  email : blah@email.test
+  github : username
+  twitter : username
+  feedburner : feedname
 
 # License info
 license:

@@ -1,171 +1,124 @@
 /*
-* assemble-jekyll
-* https://github.com/hariadi/
-*
-* Copyright (c) 2013 Hariadi Hinta
-* Licensed under the MIT license.
-*/
+ * Generated on 2014-02-10
+ * generator-assemble v0.4.8
+ * https://github.com/assemble/generator-assemble
+ *
+ * Copyright (c) 2014 Hariadi Hinta
+ * Licensed under the MIT license.
+ */
 
 'use strict';
 
+// # Globbing
+// for performance reasons we're only matching one level down:
+// '<%= config.src %>/templates/pages/{,*/}*.hbs'
+// use this if you want to match all subfolders:
+// '<%= config.src %>/templates/pages/**/*.hbs'
+
 module.exports = function(grunt) {
+
+  require('time-grunt')(grunt);
 
   // Project configuration.
   grunt.initConfig({
 
-    // Project metadata
-    pkg   : grunt.file.readJSON('package.json'),
-    vendor: grunt.file.readJSON('.bowerrc').directory,
-    site  : grunt.file.readYAML('_config.yml'),
-    pages : grunt.file.readJSON('src/data/pages.json'),
+    config: grunt.file.readYAML('_config.yml'),
 
-    config: {
-      src: 'src',
-      dist: '<%= site.dest %>',
-      bootstrap: '<%= vendor %>/bootstrap/less',
-      jquery: '<%= vendor %>/jquery',
-      holder: '<%= vendor %>/holderjs',
-      highlight: '<%= vendor %>/highlightjs'
-    },
-
-    /**
-     * Lint JavaScript
-     */
-    jshint: {
-      all: ['Gruntfile.js', 'helpers/*.js'],
-      options: {
-        jshintrc: '.jshintrc'
-      }
-    },
-
-    /**
-     * Compile LESS to CSS
-     */
-    less: {
-      options: {
-        paths: ['<%= config.bootstrap %>', '<%= config.src %>/theme/components'],
+    watch: {
+      assemble: {
+        files: ['_{posts,includes,layouts}/{,*/}*.{md,hbs,yml}'],
+        tasks: ['assemble']
       },
-      bootstrap: {
-        src: ['<%= config.src %>/theme/theme.less'],
-        dest: '<%= assemble.options.assets %>/css/blog.css'
+      livereload: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
+        files: [
+          '<%= config.dest %>/{,*/}*.html',
+          '<%= config.dest %>/assets/{,*/}*.css',
+          '<%= config.dest %>/assets/{,*/}*.js',
+          '<%= config.dest %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
       }
     },
 
-    /**
-     * Build HTML from templates and data
-     */
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        // change this to '0.0.0.0' to access the server from outside
+        hostname: 'localhost'
+      },
+      livereload: {
+        options: {
+          open: true,
+          base: [
+            '<%= config.dest %>'
+          ]
+        }
+      }
+    },
+
     assemble: {
       options: {
         flatten: true,
-
-        // Custom property for _config.yml
-        site: '<%= site %>',
-
-        // Extensions
-        helpers: ['helper-prettify', 'helper-compose', '<%= config.src %>/templates/helpers/*.js'],
-        permalinks: {
-          preset: 'pretty'
-        },
-        // Templates and data
-        data: ['data/**/*.{json,yml}'],
-        partials: ['<%= config.src %>/templates/includes/*.hbs'],
-        layoutdir: '<%= config.src %>/templates/layouts',
-        layout: 'default.hbs',
-
-        // Site variables
-        assets: '<%= site.dest %>/assets',
-        root: '<%= site.dest %>',
+        assets: '<%= config.dest %>/assets',
+        // after set this, layouts may be defined using only the name of the layout.
+        layoutdir: '_layouts',
+        // specify the extension to use for layouts, enabling layouts defined without an extension
+        layoutext: '.hbs',
+        // just call layout without extension
+        layout: 'default',
+        // include all partial with extension .hbs
+        partials: '_includes/*.hbs',
+        // npm module name or path to custom plugin, wildcard patterns may also be used
+        plugins: ['assemble-contrib-permalinks','assemble-contrib-sitemap'],
       },
-      // Generate the main pages of the site.
-      site: {
+      pages: {
         files: {
-          '<%= site.dest %>/': ['<%= config.src %>/templates/*.hbs']
+          '<%= config.dest %>/': ['_pages/*.hbs']
         }
       },
-      // Generate posts from "./data/pages.json"
       blog: {
         options: {
-          layout: 'blog.hbs',
-          engine: 'handlebars'
+          engine: 'handlebars',
+          permalinks: {
+            //structure: ':category',
+            preset: 'pretty',
+            filename: true
+          }
         },
         files: {
-          '<%= site.dest %>/blog/': ['templates/list.hbs', '<%= config.src %>/posts/*.md']
+          '<%= config.dest %>/blog/': ['_posts/*.md']
         }
       }
     },
 
-    /**
-     * Copy vendor dist to assets
-     */
-    copy: {
-      bootstrap: {
-        expand: true,
-        cwd: 'vendor/bootstrap/dist/',
-        src: [
-          'js/*',
-          'fonts/*'],
-        dest: '<%= assemble.options.assets %>/'
-      },
-      bootstrapcss: {
-        expand: true,
-        cwd: 'vendor/bootstrap/assets/',
-        src: [
-          'js/*',
-          'fonts/*'],
-        dest: '<%= assemble.options.assets %>/'
-      },
-      jquery: {
-        src: '<%= config.jquery %>/jquery.min.js',
-        dest: '<%= assemble.options.assets %>/js/jquery.js'
-      },
-      holder: {
-        src: '<%= config.holder %>/holder.js',
-        dest: '<%= assemble.options.assets %>/js/holder.js'
-      },
-      highlight: {
-        src: '<%= config.highlight %>/highlight.pack.js',
-        dest: '<%= assemble.options.assets %>/js/highlight.js'
-      },
-    },
-
-    /**
-     * Before generating any new files,
-     * clean out files from previous build.
-     */
-    clean: {
-      site: ['<%= site.dest %>']
-    },
-
-    /**
-     * Run predefined tasks whenever watched file
-     * patterns are added, changed or deleted.
-     */
-    watch: {
-      all: {
-        files: ['<%= jshint.all %>'],
-        tasks: ['jshint', 'nodeunit']
-      },
-      design: {
-        files: ['Gruntfile.js', '<%= less.options.paths %>/*.less', '<%= config.src %>/templates/**/*.hbs'],
-        tasks: ['design']
-      }
-    }
+    // Before generating any new files,
+    // remove any previously-created files.
+    clean: ['<%= config.dest %>/**/*.{html,xml}']
 
   });
 
-  // Load npm plugins to provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('assemble-less');
   grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
+  grunt.registerTask('server', [
+    'clean',
+    'assemble',
+    'connect:livereload',
+    'watch'
+  ]);
 
-  // Build HTML, compile LESS and watch for changes.
-  grunt.registerTask('design', ['clean', 'assemble', 'less:bootstrap', 'watch:design', 'connect']);
+  grunt.registerTask('build', [
+    'clean',
+    'assemble'
+  ]);
 
-  // Default tasks to be run.
-  grunt.registerTask('default', ['clean', 'jshint', 'less', 'copy', 'assemble']);
+  grunt.registerTask('default', [
+    'build'
+  ]);
+
 };

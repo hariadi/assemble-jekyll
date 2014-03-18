@@ -1,7 +1,7 @@
 {
   "name": "assemble-jekyll",
   "dependencies": {
-    "bootstrap": "~3.0.2",
+    "bootstrap": "~3.0.3",
     "holderjs": "~2.2.0",
     "highlightjs": "~7.3.0"
   }
