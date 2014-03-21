@@ -21,7 +21,7 @@
     "test": "grunt assemble"
   },
   "devDependencies": {
-    "grunt": "^0.4.4",
+    "grunt": "~0.4.4",
     "assemble": "~0.4.37",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-connect": "~0.7.1",
