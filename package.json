@@ -21,20 +21,17 @@
     "test": "grunt assemble"
   },
   "devDependencies": {
-    "grunt-contrib-watch": "^0.5.3",
     "grunt": "^0.4.4",
-    "grunt-contrib-jshint": "^0.8.0",
     "assemble": "~0.4.37",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-connect": "~0.6.0",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "assemble-contrib-permalinks": "https://github.com/hariadi/assemble-contrib-permalinks/tarball/filename-replacement",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-jshint": "~0.9.2",
+    "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-copy": "~0.5.0",
+    "assemble-contrib-permalinks": "https://github.com/hariadi/assemble-contrib-permalinks/tarball/filename-replacement",
     "handlebars-helper-compose": "~0.2.12",
-    "grunt": "~0.4.2",
-    "time-grunt": "~0.2.10",
-    "handlebars-helper-prettify": "~0.2.1"
+    "handlebars-helper-prettify": "~0.2.1",
+    "time-grunt": "~0.2.10"
   },
   "licenses": [
     {
